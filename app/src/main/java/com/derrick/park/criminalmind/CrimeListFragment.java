@@ -1,5 +1,7 @@
 package com.derrick.park.criminalmind;
 
+import android.icu.text.DateFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,8 +47,16 @@ public class CrimeListFragment extends Fragment {
         }
 
         public void bind(final Crime crime) {
+
             mTitleTextView.setText(crime.getTitle());
-            mDateTextView.setText(crime.getDate().toString());
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                DateFormat fmt = DateFormat.getDateInstance();
+                mDateTextView.setText(fmt.format(crime.getDate()));
+            } else {
+                mDateTextView.setText(crime.getDate().toString());
+            }
+
             itemView.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,6 +81,7 @@ public class CrimeListFragment extends Fragment {
                 return 1;
             }
         }
+
 
         @Override
         public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
