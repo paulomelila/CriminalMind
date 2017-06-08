@@ -18,7 +18,7 @@
         android:layout_marginBottom="31dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/imageView2"
+        app:layout_constraintRight_toLeftOf="@+id/solved"
         android:layout_marginStart="6dp"
         app:layout_constraintHorizontal_bias="1.0" />
 
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.846"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/imageView2"
+        app:layout_constraintRight_toLeftOf="@+id/solved"
         android:layout_marginStart="6dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,7 +40,7 @@
 
     <ImageView
         android:contentDescription="@string/crime_solved_label"
-        android:id="@+id/imageView2"
+        android:id="@+id/solved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_solved"

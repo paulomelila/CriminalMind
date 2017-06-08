@@ -1,5 +1,6 @@
 package com.derrick.park.criminalmind;
 
+import android.content.Intent;
 import android.icu.text.DateFormat;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import java.util.List;
 /**
  * Created by park on 2017-06-01.
@@ -19,6 +19,7 @@ public class CrimeListFragment extends Fragment {
 
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
+//    public static final String ID = "ID";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class CrimeListFragment extends Fragment {
     private class CrimeHolder extends RecyclerView.ViewHolder {
         private TextView mTitleTextView;
         private TextView mDateTextView;
+        private Crime mCrime;
 
         public CrimeHolder(View v) {
             super(v);
@@ -47,6 +49,7 @@ public class CrimeListFragment extends Fragment {
         }
 
         public void bind(final Crime crime) {
+            mCrime = crime;
 
             mTitleTextView.setText(crime.getTitle());
 
@@ -60,7 +63,11 @@ public class CrimeListFragment extends Fragment {
             itemView.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(), "You clicked on " + crime.getTitle(), Toast.LENGTH_SHORT).show();
+//                    Intent crime_info = new Intent(getActivity(), CrimeActivity.class);
+//                    crime_info.putExtra(ID, mCrime.getId());
+//                    startActivity(crime_info);
+                    Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+                    startActivity(intent);
                 }
             }));
         }
