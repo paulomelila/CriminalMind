@@ -14,7 +14,7 @@ public class Crime {
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
-    private boolean mRequiresPolice;
+    private boolean mPoliceRequired;
 
 
     public Crime() {
@@ -50,12 +50,11 @@ public class Crime {
         mSolved = solved;
     }
 
-    public boolean requiresPolice() {
-        return mRequiresPolice;
+    public boolean isPoliceRequired() {
+        return mPoliceRequired;
     }
 
-    public void setRequiresPolice(boolean mRequiresPolice) {
-        this.mRequiresPolice = mRequiresPolice;
+    public void setPoliceRequired(boolean policeRequired) {
+        mPoliceRequired = policeRequired;
     }
-
 }
