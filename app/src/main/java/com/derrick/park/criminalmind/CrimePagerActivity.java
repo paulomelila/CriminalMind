@@ -29,6 +29,7 @@ public class CrimePagerActivity extends AppCompatActivity {
         return intent;
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +37,11 @@ public class CrimePagerActivity extends AppCompatActivity {
         mCrimes = CrimeLab.get(this).getCrimes();
         mViewPager = (ViewPager) findViewById(R.id.crime_view_pager);
 
-        UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_CRIME_ID);
-
         FragmentManager fm = getSupportFragmentManager();
+        //By default, the ViewPager shows the first item in its PagerAdapter.
+        // You can have it show the crime that was selected by setting the ViewPager's
+        // current item to the index of the selected crime.
+
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
             @Override
             public Fragment getItem(int position) {
@@ -50,9 +53,11 @@ public class CrimePagerActivity extends AppCompatActivity {
             public int getCount() {
                 return mCrimes.size();
             }
+
         });
 
-        for (int i = 0; i < mCrimes.size(); i++) {
+        UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_CRIME_ID);
+        for(int i = 0; i < mCrimes.size(); i++) {
             if (mCrimes.get(i).getId().equals(crimeId)) {
                 mViewPager.setCurrentItem(i);
                 break;
