@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -99,9 +100,16 @@ public class CrimeListFragment extends Fragment {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
 
+        // display text saying the list is empty
         if (crimes.size()==0) {
-            // display text saying the list is empty
-            Toast.makeText(getActivity(), "Crime list is empty", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.empty_crime_list, Toast.LENGTH_LONG).show();
+
+
+
+
+//            View view = View.inflate(getContext(), R.layout.empty_crime_list, null);
+//            LinearLayout empty_crime_list = (LinearLayout) view.findViewById(R.id.empty_crime_list);
+//            empty_crime_list.setCon
         }
 
         if (mAdater == null) {
